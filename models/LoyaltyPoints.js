@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../services/database");
+const Account = require("./Account"); 
 
 class loyaltyPoints extends Model { }
 
@@ -26,6 +27,14 @@ loyaltyPoints.init(
         renewalDate: {
             type: DataTypes.DATE,
             allowNull: true,
+        },
+        linkedAccountId: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: Account,
+              key: "id",
+            },
+            allowNull: false,
         },
     },
     {

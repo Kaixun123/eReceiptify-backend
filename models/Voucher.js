@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../services/database");
+const LoyaltyPoints = require("./LoyaltyPoints");
 
 class Voucher extends Model { }
 
@@ -35,6 +36,15 @@ Voucher.init(
             values: ["None", "Available", "Fully Redeemed"],
             defaultValue: "None",
         },
+        linkedLoyaltyPointsId: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: LoyaltyPoints,
+              key: "id",
+            },
+            allowNull: false,
+        },
+
     },
     {
         timestamps: true,

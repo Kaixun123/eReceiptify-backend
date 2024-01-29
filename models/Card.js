@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../services/database");
+const Account = require("./Account");
 
 class Card extends Model { }
 
@@ -34,6 +35,14 @@ Card.init(
         cardNetwork: {
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        linkedAccountId: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: Account,
+              key: "id",
+            },
+            allowNull: false,
         },
     }, 
     {
