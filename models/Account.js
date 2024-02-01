@@ -25,12 +25,12 @@ Account.init(
             allowNull: true,
             defaultValue: null,
         },
-        Address: {
+        phoneNumber: {
             type: DataTypes.STRING,
             allowNull: true,
             defaultValue: null,
         },
-        password: {
+        hash: {
             type: DataTypes.STRING,
             allowNull: true,
           },
