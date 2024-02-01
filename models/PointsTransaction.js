@@ -1,6 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../services/database");
-const LoyaltyPoints = require("./LoyaltyPoints");
+const LoyaltyProfile = require("./LoyaltyProfile");
 
 class PointsTransaction extends Model { }
 
@@ -25,10 +25,10 @@ PointsTransaction.init(
             allowNull: true,
             defaultValue: null,
         },
-        linkedLoyaltyPointsId: {
+        linkedLoyaltyProfileId: {
             type: DataTypes.INTEGER,
             references: {
-              model: LoyaltyPoints,
+              model: LoyaltyProfile,
               key: "id",
             },
             allowNull: false,

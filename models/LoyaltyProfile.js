@@ -1,20 +1,16 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../services/database");
 const Account = require("./Account"); 
+const LoyaltyTier = require("./LoyaltyTier");
 
-class loyaltyPoints extends Model { }
+class LoyaltyProfile extends Model { }
 
-loyaltyPoints.init(
+LoyaltyProfile.init(
     {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
-        },
-        tier: {
-            type: DataTypes.ENUM,
-            values: ["None", "Bronze", "Sliver", "Gold"],
-            defaultValue: "None",
         },
         totalPoints: {
             type: DataTypes.INTEGER,
@@ -36,6 +32,14 @@ loyaltyPoints.init(
             },
             allowNull: false,
         },
+        linkedTierId: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: LoyaltyTier,
+              key: "id",
+            },
+            allowNull: false,
+        },
     },
     {
         timestamps: true,
@@ -44,4 +48,4 @@ loyaltyPoints.init(
     }
 );
 
-module.exports = loyaltyPoints;
+module.exports = LoyaltyProfile;
