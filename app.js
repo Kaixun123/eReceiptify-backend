@@ -64,6 +64,10 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(cors(corOptions));
 
+const accountRoutes = require("./routes/accountHandling");
+
+app.use("/api/account", accountRoutes);
+
 
 app.use((req, res, next) => {
     return res.status(404).json({ message: "Route not found" });
