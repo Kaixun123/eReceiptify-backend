@@ -65,8 +65,10 @@ if (process.env.NODE_ENV === "development") {
 app.use(cors(corOptions));
 
 const accountRoutes = require("./routes/accountHandling");
+const receiptRoutes = require("./routes/receiptHandling");
 
 app.use("/api/account", accountRoutes);
+app.use("/api/receipt", receiptRoutes);
 
 
 app.use((req, res, next) => {
