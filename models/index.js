@@ -74,6 +74,7 @@ module.exports = {
     Receipt,
     ReceiptItem,
     LoyaltyProfile,
+    LoyaltyTier,
     PointsTransaction,
     Voucher,
     VoucherInstance
