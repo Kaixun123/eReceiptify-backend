@@ -3,6 +3,7 @@ const Card = require("./Card");
 const Receipt = require("./Receipt");
 const ReceiptItem = require("./ReceiptItem");
 const LoyaltyProfile = require("./LoyaltyProfile");
+const LoyaltyTier = require("./LoyaltyTier");
 const PointsTransaction = require("./PointsTransaction");
 const Voucher = require("./Voucher");
 const VoucherInstance = require("./VoucherInstance");
@@ -66,3 +67,14 @@ PointsTransaction.belongsTo(LoyaltyProfile, {
 Voucher.belongsToMany(LoyaltyProfile, {
     through: VoucherInstance
 });
+
+module.exports = {
+    Account,
+    Card,
+    Receipt,
+    ReceiptItem,
+    LoyaltyProfile,
+    PointsTransaction,
+    Voucher,
+    VoucherInstance
+};
