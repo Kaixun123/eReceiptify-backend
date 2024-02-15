@@ -36,6 +36,16 @@ Voucher.init(
             values: ["None", "Available", "Fully Redeemed"],
             defaultValue: "None",
         },
+        voucherMaxRedeem: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: null,
+        },
+        voucherRedeemCount: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: null,
+        },
         linkedLoyaltyProfileId: {
             type: DataTypes.INTEGER,
             references: {
