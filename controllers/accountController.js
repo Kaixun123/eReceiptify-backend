@@ -6,7 +6,6 @@ const { Op } = require("sequelize");
 const crypto = require("crypto");
 
 const path = require('path');
-const csv = require('csv-parser');
 const stream = require('stream');
 
 const { sequelize } = require("../services/database");
@@ -20,8 +19,7 @@ const login = async (req, res, next) => {
             where: {
                 [Op.or]: [
                     { email: username },
-                    { username: username },
-                    { telegram: username }
+                    { username: username }
                 ]
             }
         }).then((result) => result).catch((err) => console.log(err))
@@ -55,26 +53,6 @@ const login = async (req, res, next) => {
                         // secure: true,
                         httpOnly: true,
                     })
-
-
-                let guest_id = await get_guest_user_id(req)
-                console.log({ guest_id })
-
-                if (guest_id) {
-                    let update_guest = await GuestUserModel.update({
-                        user_id: user.id
-                    }, {
-                        where: {
-                            id: guest_id
-                        }
-                    }).then((result) => result).catch((err) => console.log(err))
-
-                    if (update_guest) {
-                        // clear guest cookie
-                        res.clearCookie("gUser")
-                    }
-                }
-
                 res.status(200).json({
                     status: 200,
                     message: "Login success",
@@ -105,7 +83,6 @@ const logout = async (req, res, next) => {
     try {
         res.clearCookie("jwtToken")
         res.clearCookie("user")
-
         res.status(200).json({
             status: 200,
             message: "Logout success"
@@ -119,7 +96,7 @@ const logout = async (req, res, next) => {
     }
 }
 
-const createAccount = async(req, res, next) => {
+const createAccount = async (req, res, next) => {
     try {
         let { email, password } = req.body
 
@@ -165,15 +142,24 @@ const createAccount = async(req, res, next) => {
     }
 }
 
-const getUserInfo = async(req, res, next) => {
+const getUserInfo = async (req, res, next) => {
     try {
         let user_id = await get_user_id(req)
         if (user_id) {
-            let user_data = await fetch_user_entity_by_id(user_id)
+            let user_data = await Account.findOne({
+                where: {
+                    id: user_id
+                }
+            }).then((result) => result).catch((err) => console.log(err))
             res.status(200).json({
                 status: 200,
                 message: "User profile loaded",
-                data: user_data
+                data: {
+                    firstName: user_data.firstName,
+                    lastName: user_data.lastName,
+                    email: user_data.email,
+                    phoneNumber: user_data.phoneNumber,
+                }
             })
         } else {
             res.status(401).json({

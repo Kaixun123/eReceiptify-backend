@@ -14,11 +14,9 @@ Receipt.init(
         },
         invoiceId: {
             type: DataTypes.STRING,
-            autoIncrement: true,
         },
         Total: {
             type: DataTypes.FLOAT,
-            autoIncrement: true,
         },
         linkedAccountId: {
             type: DataTypes.INTEGER,
