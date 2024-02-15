@@ -12,6 +12,9 @@ const stream = require('stream');
 const { sequelize } = require("../services/database");
 const e = require("express");
 const qrcode = require('qrcode');
+const { Storage } = require('@google-cloud/storage');
+
+const storage = new Storage();
 
 const generateQRCode = async(req, res, next) => {
     try{
