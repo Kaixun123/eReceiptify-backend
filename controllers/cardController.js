@@ -14,7 +14,7 @@ async function getCards(req, res) {
     });
 }
 
-async function getcard(req, res) => {
+async function getcard(req, res) {
     let cardID = req.body.cardID;
     let card = await Card.findOne({
         where: {

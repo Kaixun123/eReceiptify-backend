@@ -61,7 +61,7 @@ const accountRoutes = require("./routes/accountHandling");
 const receiptRoutes = require("./routes/receiptHandling");
 
 app.use("/api/account", accountRoutes);
-//app.use("/api/receipt", receiptRoutes);
+app.use("/api/receipt", receiptRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello from App Engine!');
