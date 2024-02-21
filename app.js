@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const app = express();
 require("dotenv").config();
-const EXPRESS_PORT = process.env.EXPRESS_PORT;
+const EXPRESS_PORT = process.env.PORT;
 const { sequelize } = require("./services/database.js")
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -63,6 +63,9 @@ const receiptRoutes = require("./routes/receiptHandling");
 app.use("/api/account", accountRoutes);
 //app.use("/api/receipt", receiptRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Hello from App Engine!');
+});
 
 app.use((req, res, next) => {
   return res.status(404).json({ message: "Route not found" });
