@@ -19,7 +19,7 @@ Card.init(
         cardNo: {
             type: DataTypes.INTEGER,
             allowNull: true,
-          },
+        },
         salt: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -33,18 +33,18 @@ Card.init(
             allowNull: true,
         },
         cardNetwork: {
-            type: DataTypes.STRING,
-            allowNull: true,
+            type: DataTypes.ENUM,
+            values: ["None", "Visa", "Mastercard", "American Express", "Discover"],
         },
         linkedAccountId: {
             type: DataTypes.INTEGER,
             references: {
-              model: Account,
-              key: "id",
+                model: Account,
+                key: "id",
             },
             allowNull: false,
         },
-    }, 
+    },
     {
         timestamps: true,
         paranoid: true,
