@@ -46,13 +46,13 @@ const paymentTransaction = async(req, res, next) => {
 
         let card = await Card.findOne({
             where: {
-                linkedAccountId: user
+                linkedAccountId: "1"
             }
         }).then((result) => result.id).catch((err) => console.log(err));
 
         let receipt = await Receipt.create({
             invoiceId: crypto.randomBytes(16).toString('hex'),
-            Total: receiptTransaction.amount,
+            Total: parseFloat(receiptTransaction.total),
             linkedAccountId: user,
             linkedCardId: card
         }).then((result) => result.id).catch((err) => console.log(err));
