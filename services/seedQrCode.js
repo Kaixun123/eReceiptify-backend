@@ -3,7 +3,10 @@ const fs = require('fs');
 
 const generateTestQRCode = async () => {
     try {
-        const testData = {
+        const testData = 
+        {
+          "emailAddress": "Sathwik@hotmail.com",
+          "receiptTransaction":{
             "userId": "1",
             "total": 100.00,
             "emailAddress": "Sathwik@hotmail.com",
@@ -28,6 +31,7 @@ const generateTestQRCode = async () => {
               }
             ]
           }
+        };
 
         let qrCodeStream = fs.createWriteStream('test-qr-code.png');
 

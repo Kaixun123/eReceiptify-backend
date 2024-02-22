@@ -4,9 +4,9 @@ const accountController = require('../controllers/accountController');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post("/create-account", (res, req) => accountController.createAccount(res, req));
-router.post("/login", (res, req) => accountController.login(res, req));
-router.get("/get-userInfo", (res, req) => accountController.getUserInfo(res, req));
-router.post("/logout", (res, req) => accountController.logout(res, req));
+router.post("/create-account", (req, res) => accountController.createAccount(req, res));
+router.post("/login", (req, res) => accountController.login(req, res));
+router.get("/get-userInfo", (req, res) => accountController.getUserInfo(req, res));
+router.post("/logout", (req, res) => accountController.logout(req, res));
 
 module.exports = router;
