@@ -36,8 +36,11 @@ const generateQRCode = async(req, res, next) => {
 
 const paymentTransaction = async(req, res, next) => {
     try{
+        console.log(req);
+        console.log(req.body);
         let { receiptTransaction, emailAddress } = req.body
-
+        console.log(receiptTransaction);
+        console.log(emailAddress);
         let user = await Account.findOne({
             where: {
                 emailAddress: emailAddress
@@ -59,8 +62,8 @@ const paymentTransaction = async(req, res, next) => {
 
         console.log("receipt created");
 
-        receiptTransaction.array.forEach(async receiptItem => {
-            await receiptItem.create({
+        receiptTransaction.items.forEach(async receiptItem => {
+            await ReceiptItem.create({
                 linkedReceiptId: receipt,
                 itemType: receiptItem.itemType,
                 itemName: receiptItem.itemName,

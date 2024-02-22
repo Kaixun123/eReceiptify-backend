@@ -41,6 +41,14 @@ async function addUsers() {
                 phoneNumber: "87654321",
                 hash: password_hash,
                 salt: password_salt
+            },
+            {
+                fname: "Sathwik",
+                lnaem: "Kumar",
+                emailAddress: "sathwik@hotmail.com",
+                phoneNumber: "12345678",
+                hash: password_hash,
+                salt: password_salt
             }
         ]);
     } catch (error) {
