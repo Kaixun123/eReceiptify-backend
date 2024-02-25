@@ -1,4 +1,8 @@
-readme_content = """
 # Running eReceipitfy on Google Cloud Platform
 
 Welcome to the setup guide for running eReceiptify on Google Cloud Platform (GCP). This guide will walk you through deploying the project either on Google Kubernetes Engine (GKE) or Google Cloud Run, depending on your preference and project needs.
+
+## Prerequisites
+
+- A Google Cloud Platform account. Sign up at [Google Cloud](https://cloud.google.com) if you don't have an account yet.
+- The `gcloud` command-line tool installed. Follow the [Installing Google Cloud SDK](https://cloud.google.com/sdk/docs/install) guide for installation instructions.
