@@ -6,3 +6,8 @@ Welcome to the setup guide for running eReceiptify on Google Cloud Platform (GCP
 
 - A Google Cloud Platform account. Sign up at [Google Cloud](https://cloud.google.com) if you don't have an account yet.
 - The `gcloud` command-line tool installed. Follow the [Installing Google Cloud SDK](https://cloud.google.com/sdk/docs/install) guide for installation instructions.
+
+## To run our backend:
+
+- **Clone this repository**: git clone https://github.com/Kaixun123/eReceiptify-backend
+- **Install Dependenices required for this project**: npm install
